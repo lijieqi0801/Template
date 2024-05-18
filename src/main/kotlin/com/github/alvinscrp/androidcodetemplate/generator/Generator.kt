@@ -1,20 +1,26 @@
-package com.github.alvinscrp.androidcodetemplate.generator.mvvm
+package com.github.alvinscrp.androidcodetemplate.generator
 
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
 import com.github.alvinscrp.androidcodetemplate.generator.util.AppType
 
+enum class GeneratorType {
+    Activity, Fragment, Dialog
+}
 
 /**
  * 模板配置需要的参数，根据你的需要，在这里添加
  */
-fun jlMvvmGenerator(appType: AppType): Template {
+fun generator(appType: AppType, type: GeneratorType): Template {
 
     return template {
-        name = "DataBinding Mvvm Temp Code - ${appType.key}"
-        description =
-            "生成一套基于DataBinding的MVVM代码，包括：Activity、Fragment、ViewModel、ListAdapter、 ListItemModel、BeanModelConvert、Bean、 Retrofit Api、 Repository"
+        name = when (type) {
+            GeneratorType.Activity -> "DataBinding  Template Activity"
+            GeneratorType.Fragment -> "DataBinding  Template Fragment"
+            else -> "DataBinding  Template Dialog"
+        }
+        description = "生成一套模版代码"
         minApi = MIN_API
 
         category = Category.Other
@@ -28,9 +34,9 @@ fun jlMvvmGenerator(appType: AppType): Template {
 
         //业务名称
         val bizNameParameter = stringParameter {
-            name = "Business Name：英文，小写开头，camel命名，可以多单词"
+            name = "Business Name：英文，小写开头，驼峰命名，可以多单词"
             default = "template"
-            help = "业务名称：英文，可以多单词，camel命名，用来作为生成的各种文件的前缀"
+            help = "业务名称：英文，可以多单词，驼峰命名，用来作为生成的各种文件的前缀"
             constraints = listOf(Constraint.NONEMPTY)
         }
 
@@ -64,15 +70,40 @@ fun jlMvvmGenerator(appType: AppType): Template {
             CheckBoxWidget(isCreateActivityParameter)
         )
 
-        recipe = {
-            mvvmRecipe(
-                it as ModuleTemplateData,
-                bizNameParameter.value,
-                classPackageNameParameter.value,
+        when(type){
+            GeneratorType.Activity ->{
+                recipe = {
+                    activityRecipe(
+                        it as ModuleTemplateData,
+                        bizNameParameter.value,
+                        classPackageNameParameter.value,
 //                appTypeParameter.value,
-                appType,
-                isCreateActivityParameter.value
-            )
+                        appType
+                    )
+                }
+            }
+            GeneratorType.Fragment ->{
+                recipe = {
+                    fragmentRecipe(
+                        it as ModuleTemplateData,
+                        bizNameParameter.value,
+                        classPackageNameParameter.value,
+//                appTypeParameter.value,
+                        appType
+                    )
+                }
+            }
+            else->{
+                recipe = {
+                    dialogRecipe(
+                        it as ModuleTemplateData,
+                        bizNameParameter.value,
+                        classPackageNameParameter.value,
+//                appTypeParameter.value,
+                        appType
+                    )
+                }
+            }
         }
     }
 }
