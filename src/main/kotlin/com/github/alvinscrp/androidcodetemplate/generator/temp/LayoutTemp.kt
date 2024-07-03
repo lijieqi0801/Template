@@ -17,7 +17,6 @@ fun activityLayoutTemp(): String {
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_board"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

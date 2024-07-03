@@ -29,7 +29,7 @@ fun activityTemp(
     @Route("")
     class ${firstUppercase(bizName)}Activity : ${appType.simpleBaseActivity()}(R.layout.${activityLayoutName(moduleName, bizName)}) {
     
-        private val binding=binding<Activity${firstUppercase(bizName)}Binding>() 
+        private val binding:Activity${firstUppercase(bizName)}Binding by binding() 
         
         override fun onSetupUI() {
            statusBar().overlay().color(Color.TRANSPARENT)
