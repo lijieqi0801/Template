@@ -34,7 +34,8 @@ fun RecipeExecutor.activityRecipe(
     moduleData: ModuleTemplateData,
     bizName: String,
     classPackageName: String,
-    appType: AppType
+    appType: AppType,
+    resDirName: String? = null
 ) {
     val (projectData, srcOut, resOut) = moduleData
     val moduleName = moduleData.rootDir.name.toLowerCaseAsciiOnly()
@@ -61,10 +62,10 @@ fun RecipeExecutor.activityRecipe(
 //        generateActivityTitle = false,
 //        manifestOut = manifestOut
 //    )
-
     save(
         activityLayoutTemp(),
-        resOut.resolve("layout/${activityLayoutName(moduleName, bizName)}.xml")
+        resOut.resolveSibling(resDirName ?: "")
+            .resolve("layout/${activityLayoutName(moduleName, bizName)}.xml")
     )
 
 }
@@ -73,7 +74,8 @@ fun RecipeExecutor.fragmentRecipe(
     moduleData: ModuleTemplateData,
     bizName: String,
     classPackageName: String,
-    appType: AppType
+    appType: AppType,
+    resDirName: String? = null
 ) {
     val (projectData, srcOut, resOut) = moduleData
     val moduleName = moduleData.rootDir.name.toLowerCaseAsciiOnly()
@@ -87,7 +89,8 @@ fun RecipeExecutor.fragmentRecipe(
     )
     save(
         fragmentLayoutTemp(appType, classPackageName, bizName),
-        resOut.resolve("layout/${fragmentLayoutName(moduleName, bizName)}.xml")
+        resOut.resolveSibling(resDirName ?: "")
+            .resolve("layout/${fragmentLayoutName(moduleName, bizName)}.xml")
     )
 }
 
@@ -95,7 +98,8 @@ fun RecipeExecutor.dialogRecipe(
     moduleData: ModuleTemplateData,
     bizName: String,
     classPackageName: String,
-    appType: AppType
+    appType: AppType,
+    resDirName: String? = null
 ) {
     val (projectData, srcOut, resOut) = moduleData
     val moduleName = moduleData.rootDir.name.toLowerCaseAsciiOnly()
@@ -108,6 +112,7 @@ fun RecipeExecutor.dialogRecipe(
     )
     save(
         fragmentLayoutTemp(appType, classPackageName, bizName),
-        resOut.resolve("layout/${dialogLayoutName(moduleName, bizName)}.xml")
+        resOut.resolveSibling(resDirName ?: "")
+            .resolve("layout/${dialogLayoutName(moduleName, bizName)}.xml")
     )
 }

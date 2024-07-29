@@ -34,6 +34,7 @@ fun dialogTemp(
             setView(binding.root)
             setDimAmount(0.7f)
             setupView()
+             window?.setWindowAnimations(R.style.dialog_common_anim)
         }
         
         private fun setupView() {

@@ -49,6 +49,12 @@ fun generator(appType: AppType, type: GeneratorType): Template {
             suggest = { packageName }
         }
 
+        val xmlParameter = stringParameter {
+            name = "xml 文件的存放位置"
+            help = "文件名称：生成xml文件的存放位置"
+            default = "res"
+        }
+
         //baseActivity，baseFragment依赖的base文件路径
 //        val appTypeParameter = enumParameter<AppType> {
 //            name = "应用区分，决定各种底层库的依赖路径"
@@ -66,6 +72,7 @@ fun generator(appType: AppType, type: GeneratorType): Template {
         widgets(
             TextFieldWidget(bizNameParameter),
             TextFieldWidget(classPackageNameParameter),
+            TextFieldWidget(xmlParameter),
 //            EnumWidget(appTypeParameter),
             CheckBoxWidget(isCreateActivityParameter)
         )
@@ -78,7 +85,8 @@ fun generator(appType: AppType, type: GeneratorType): Template {
                         bizNameParameter.value,
                         classPackageNameParameter.value,
 //                appTypeParameter.value,
-                        appType
+                        appType,
+                        xmlParameter.value
                     )
                 }
             }
@@ -89,7 +97,8 @@ fun generator(appType: AppType, type: GeneratorType): Template {
                         bizNameParameter.value,
                         classPackageNameParameter.value,
 //                appTypeParameter.value,
-                        appType
+                        appType,
+                        xmlParameter.value
                     )
                 }
             }
@@ -100,7 +109,8 @@ fun generator(appType: AppType, type: GeneratorType): Template {
                         bizNameParameter.value,
                         classPackageNameParameter.value,
 //                appTypeParameter.value,
-                        appType
+                        appType,
+                        xmlParameter.value
                     )
                 }
             }

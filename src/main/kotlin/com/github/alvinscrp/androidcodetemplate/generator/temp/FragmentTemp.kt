@@ -32,7 +32,7 @@ fun fragmentTemp(
                 return fragment
             }
         }
-        private val binding:Fragment${firstUppercase(bizName)}Binding> by binding()
+        private val binding:Fragment${firstUppercase(bizName)}Binding by binding()
         
         override fun onSetupUI() {
            
