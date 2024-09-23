@@ -34,11 +34,16 @@ fun dialogTemp(
             setView(binding.root)
             setDimAmount(0.7f)
             setupView()
-             window?.setWindowAnimations(R.style.dialog_common_anim)
+            window?.setWindowAnimations(R.style.dialog_common_anim)
+            setupClick()
         }
         
         private fun setupView() {
 
+        }
+        
+        private fun setupClick() {
+        
         }
     }
 """.trimIndent()

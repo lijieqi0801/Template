@@ -35,7 +35,11 @@ fun fragmentTemp(
         private val binding:Fragment${firstUppercase(bizName)}Binding by binding()
         
         override fun onSetupUI() {
-           
+           setupClick()
+        }
+        
+        private fun setupClick() {
+        
         }
     }
 """.trimIndent()

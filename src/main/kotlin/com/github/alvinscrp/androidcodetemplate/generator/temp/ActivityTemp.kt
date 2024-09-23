@@ -33,6 +33,11 @@ fun activityTemp(
         
         override fun onSetupUI() {
            statusBar().overlay().color(Color.TRANSPARENT)
+           setupClick()
+        }
+        
+        private fun setupClick() {
+        
         }
     }
 """.trimIndent()
