@@ -32,13 +32,13 @@ import org.jetbrains.kotlin.util.capitalizeDecapitalize.toLowerCaseAsciiOnly
  */
 fun RecipeExecutor.activityRecipe(
     moduleData: ModuleTemplateData,
+    moduleName: String,
     bizName: String,
     classPackageName: String,
     appType: AppType,
     resDirName: String? = null
 ) {
     val (projectData, srcOut, resOut) = moduleData
-    val moduleName = moduleData.rootDir.name.toLowerCaseAsciiOnly()
     val modulePackageName = projectData.applicationPackage ?: ""
 
     println("---->${projectData.rootDir},${projectData.applicationPackage},${moduleData.rootDir.name},${moduleData.packageName}")
@@ -72,13 +72,14 @@ fun RecipeExecutor.activityRecipe(
 
 fun RecipeExecutor.fragmentRecipe(
     moduleData: ModuleTemplateData,
+    moduleName: String,
     bizName: String,
     classPackageName: String,
     appType: AppType,
     resDirName: String? = null
 ) {
     val (projectData, srcOut, resOut) = moduleData
-    val moduleName = moduleData.rootDir.name.toLowerCaseAsciiOnly()
+//    val moduleName = moduleData.rootDir.name.toLowerCaseAsciiOnly()
     val modulePackageName = projectData.applicationPackage ?: ""
 
     println("---->${projectData.rootDir},${projectData.applicationPackage},${moduleData.rootDir.name},${moduleData.packageName}")
@@ -96,13 +97,14 @@ fun RecipeExecutor.fragmentRecipe(
 
 fun RecipeExecutor.dialogRecipe(
     moduleData: ModuleTemplateData,
+    moduleName: String,
     bizName: String,
     classPackageName: String,
     appType: AppType,
     resDirName: String? = null
 ) {
     val (projectData, srcOut, resOut) = moduleData
-    val moduleName = moduleData.rootDir.name.toLowerCaseAsciiOnly()
+//    val moduleName = moduleData.rootDir.name.toLowerCaseAsciiOnly()
     val modulePackageName = projectData.applicationPackage ?: ""
     println("---->${projectData.rootDir},${projectData.applicationPackage},${moduleData.rootDir.name},${moduleData.packageName}")
 

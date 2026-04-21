@@ -31,12 +31,17 @@ fun generator(appType: AppType, type: GeneratorType): Template {
             WizardUiContext.NewProject,
             WizardUiContext.NewModule
         )
-
-        //业务名称
+        val moduleParameter = stringParameter {
+            name = "module Name：英文，小写开头"
+            default = ""
+            help = "用来作为生成的各种文件的前缀"
+            constraints = listOf(Constraint.NONEMPTY)
+        }
+        //文件名称
         val bizNameParameter = stringParameter {
-            name = "Business Name：英文，小写开头，驼峰命名，可以多单词"
+            name = "File Name：英文，小写开头，驼峰命名，可以多单词"
             default = "template"
-            help = "业务名称：英文，可以多单词，驼峰命名，用来作为生成的各种文件的前缀"
+            help = "文件名称：英文，可以多单词，驼峰命名，用来作为生成的各种文件的前缀"
             constraints = listOf(Constraint.NONEMPTY)
         }
 
@@ -70,6 +75,7 @@ fun generator(appType: AppType, type: GeneratorType): Template {
 
 
         widgets(
+            TextFieldWidget(moduleParameter),
             TextFieldWidget(bizNameParameter),
             TextFieldWidget(classPackageNameParameter),
             TextFieldWidget(xmlParameter),
@@ -82,6 +88,7 @@ fun generator(appType: AppType, type: GeneratorType): Template {
                 recipe = {
                     activityRecipe(
                         it as ModuleTemplateData,
+                        moduleParameter.value,
                         bizNameParameter.value,
                         classPackageNameParameter.value,
 //                appTypeParameter.value,
@@ -94,6 +101,7 @@ fun generator(appType: AppType, type: GeneratorType): Template {
                 recipe = {
                     fragmentRecipe(
                         it as ModuleTemplateData,
+                        moduleParameter.value,
                         bizNameParameter.value,
                         classPackageNameParameter.value,
 //                appTypeParameter.value,
@@ -106,6 +114,7 @@ fun generator(appType: AppType, type: GeneratorType): Template {
                 recipe = {
                     dialogRecipe(
                         it as ModuleTemplateData,
+                        moduleParameter.value,
                         bizNameParameter.value,
                         classPackageNameParameter.value,
 //                appTypeParameter.value,

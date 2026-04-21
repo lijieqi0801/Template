@@ -21,7 +21,7 @@ fun fragmentTemp(
     import ${appType.fullBaseFragment()}
     import ${modulePackageName}.R
     import me.reezy.cosmo.binding.binding
-    import ${modulePackageName}.databinding.Fragment${firstUppercase(bizName)}Binding
+    import ${modulePackageName}.databinding.${firstUppercase(moduleName)}Fragment${firstUppercase(bizName)}Binding
     
     class ${firstUppercase(bizName)}Fragment : ${appType.simpleBaseFragment()}(R.layout.${fragmentLayoutName(moduleName, bizName)}) {
         companion object{
@@ -32,7 +32,7 @@ fun fragmentTemp(
                 return fragment
             }
         }
-        private val binding:Fragment${firstUppercase(bizName)}Binding by binding()
+        private val binding:${firstUppercase(moduleName)}Fragment${firstUppercase(bizName)}Binding by binding()
         
         override fun onSetupUI() {
            setupClick()

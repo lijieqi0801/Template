@@ -23,10 +23,10 @@ fun dialogTemp(
     import ${appType.fullBaseDialog()}
     import ${modulePackageName}.R
     import androidx.databinding.DataBindingUtil
-    import ${modulePackageName}.databinding.Dialog${firstUppercase(bizName)}Binding
+    import ${modulePackageName}.databinding.${firstUppercase(moduleName)}Dialog${firstUppercase(bizName)}Binding
     
     class ${firstUppercase(bizName)}Dialog(context: Context) : CustomDialog(context){
-        private val binding = DataBindingUtil.inflate<Dialog${firstUppercase(bizName)}Binding>(
+        private val binding = DataBindingUtil.inflate<${firstUppercase(moduleName)}Dialog${firstUppercase(bizName)}Binding>(
             layoutInflater, R.layout.${dialogLayoutName(moduleName, bizName)}, null, false
         )
 

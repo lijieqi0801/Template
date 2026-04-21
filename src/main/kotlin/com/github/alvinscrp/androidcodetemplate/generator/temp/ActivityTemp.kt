@@ -22,18 +22,21 @@ fun activityTemp(
     import ${modulePackageName}.R
     import me.reezy.cosmo.binding.binding
     import me.reezy.cosmo.router.annotation.Route
-    import me.reezy.cosmo.systembars.statusBar
-    import android.graphics.Color
-    import ${modulePackageName}.databinding.Activity${firstUppercase(bizName)}Binding
+    import me.reezy.cosmo.utility.window.fitsStatusBar
+    import me.reezy.cosmo.utility.window.isStatusBarLight
+    import ${modulePackageName}.databinding.${firstUppercase(moduleName)}Activity${firstUppercase(bizName)}Binding
     
     @Route("")
     class ${firstUppercase(bizName)}Activity : ${appType.simpleBaseActivity()}(R.layout.${activityLayoutName(moduleName, bizName)}) {
     
-        private val binding:Activity${firstUppercase(bizName)}Binding by binding() 
+        private val binding:${firstUppercase(moduleName)}Activity${firstUppercase(bizName)}Binding by binding() 
         
         override fun onSetupUI() {
-           statusBar().overlay().color(Color.TRANSPARENT)
-           setupClick()
+            window.setLayoutInStatusBar()
+            window.isStatusBarLight = true
+            window.navigationBarColor = (0xffF7F7F7).toInt()
+            binding.toolbar.fitsStatusBar()
+            setupClick()
         }
         
         private fun setupClick() {

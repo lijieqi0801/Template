@@ -5,18 +5,18 @@ import com.android.tools.idea.wizard.template.underscoreToCamelCase
 import org.jetbrains.kotlin.util.capitalizeDecapitalize.toLowerCaseAsciiOnly
 
 fun activityLayoutName(moduleName: String, bizName: String): String {
-    val name = bizName.map { if (it.isUpperCase()) "_${it.lowercaseChar()}" else it}.joinToString("")
-    return "activity_$name"
+    val name = bizName.map { if (it.isUpperCase()) "_${it.lowercaseChar()}" else it }.joinToString("")
+    return "${moduleName}_activity_$name"
 }
 
 fun fragmentLayoutName(moduleName: String, bizName: String): String {
-    val name = bizName.map { if (it.isUpperCase()) "_${it.lowercaseChar()}" else it}.joinToString("")
-    return "fragment_$name"
+    val name = bizName.map { if (it.isUpperCase()) "_${it.lowercaseChar()}" else it }.joinToString("")
+    return "${moduleName}_fragment_$name"
 }
 
 fun dialogLayoutName(moduleName: String, bizName: String): String {
-    val name = bizName.map { if (it.isUpperCase()) "_${it.lowercaseChar()}" else it}.joinToString("")
-    return "dialog_$name"
+    val name = bizName.map { if (it.isUpperCase()) "_${it.lowercaseChar()}" else it }.joinToString("")
+    return "${moduleName}_dialog_$name"
 }
 
 
